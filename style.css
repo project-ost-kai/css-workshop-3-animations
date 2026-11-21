@@ -12,7 +12,52 @@
 /* ===== БЛОК A. Сюда — описания @keyframes (этапы 1-4) ===== */
 /* Добавляйте по одному сценарию: blink, pulse, slide, fade-in */
 
-/* ваши @keyframes здесь */
+@keyframes blink {
+    from{
+        opacity: 0;
+    }
+
+    to{
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    from{
+        transform: scale(1);
+    }
+
+    to{
+        transform: scale(1.05);
+    }
+}
+
+@keyframes slide {
+    from{
+        transform: translateX(0);
+    }
+
+    to{
+        transform: translateX(30px);
+    }
+}
+
+@keyframes fade-in {
+    from{
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    35%{
+        transform: translateY(20px);
+        opacity: 0.5;
+    }
+
+    to{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
 
 
 /* ===== Базовые статичные стили макета (менять не нужно) ===== */
@@ -57,11 +102,21 @@ body {
 
 /* ===== БЛОК B. Сюда — подключение animation к карточкам ===== */
 /* .box-2 — Мигание (этап 1)                                   */
-/* .box-3 — Пульсация (этап 2)                                 */
-/* .box-4 — Движение (этап 3)                                  */
-/* .box-1 — Плавное появление (этап 4)                         */
+.box-2 {
+    animation: blink 0.4s linear infinite alternate;
+}
 
-/* ваши правила .box-N { animation: ...; } здесь */
+.box-3 {
+    animation: pulse 0.4s linear infinite alternate;
+}
+
+.box-4 {
+    animation: slide 1s linear infinite alternate;
+}
+
+.box-1 {
+    animation: fade-in 0.9s linear infinite alternate;
+}
 
 
 /* ===== БЛОК C. Этап 5 — доступность ===== */
@@ -69,3 +124,9 @@ body {
 /* который отключает анимации у всех карточек                  */
 
 /* ваш медиазапрос здесь */
+
+@media (prefers-reduced-motion: reduce) {
+    .box {
+        animation: none;
+    }
+}
